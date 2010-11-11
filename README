@@ -1,0 +1,44 @@
+
+hi all,
+
+this is a sample emulator for HW behavior wrote by c, you can check each catalog in this below
+
+Algorithm
+
+BIST
+http://funningboy.blogspot.com/2010/07/bist.html
+
+DVFS
+http://funningboy.blogspot.com/2010/07/dvfs-emulator.html
+http://funningboy.blogspot.com/2010/08/smartreflex-power-and-performance.html
+
+iOS
+http://funningboy.blogspot.com/2010/11/orzmicrokernel-case-stusy-emulator.html
+
+network on chip
+http://funningboy.blogspot.com/2010/08/network-on-chip-c.html
+
+pci
+
+smart_reflex
+http://funningboy.blogspot.com/2010/08/smartreflex-power-and-performance.html
+
+ARM NEON
+http://funningboy.blogspot.com/2010/08/arm-cortex-ax-with-neon-simd.html
+
+Boot_alg
+http://funningboy.blogspot.com/2010/08/booth-algorithm.html
+
+CUDA
+http://funningboy.blogspot.com/2010/10/cuda-nvdia-hardware-driver.html
+
+MESI
+http://funningboy.blogspot.com/2010/10/mesi-emulator-cache-protocol.html
+
+out_of_order
+http://funningboy.blogspot.com/2010/08/amba-40-axi-bus.html
+
+SW_HW_cowk
+
+SMP
+http://funningboy.blogspot.com/2010/09/smp-linux-kernel-case-study.html
