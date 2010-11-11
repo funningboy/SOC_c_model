@@ -1,0 +1,59 @@
+void *SetAddrInf2NetNodeId_0(void *t){
+     int NodeId = (int)t;
+     int cot;
+
+while( CheckOwnTaskListAddrDone(NodeId) == NET_FALSE ){
+    cot =3;
+     while( NetNode[NodeId].Addr_FULL == NET_TRUE ){
+            sleep( NetNode[NodeId].Addr_DELAY );
+            if( cot== 0 ){ printf("Out-of-Time Wait 4 NetNode Set Addr Phase @ %d \n",NodeId); break; }
+            cot--;
+     }
+
+     if( cot >0 ){
+        pthread_mutex_lock(&count_mutex);
+        if ( CheckTaskListAndSetAddrInf2NetNode(NodeId) == NET_OK_TASK ){
+                printf("Set TaskList 2 NetNode Ok @ %d \n",NodeId);
+                if(NET_DEBUG==0){ DisplayMapTable4NetNode();}
+        }
+        pthread_mutex_unlock(&count_mutex);
+     } else {
+           sleep( NetNode[NodeId].Addr_DELAY );
+    }
+
+    sleep( NetNode[NodeId].Addr_DELAY );
+ }
+ pthread_exit(NULL);
+}
+
+void *GetAddrInf2NetNodeId_0(void *t){
+     int NodeId = (int)t;
+     int cot;
+
+while( CheckOwnTaskListAddrDone(NodeId) == NET_FALSE ){
+    cot =3;
+    while( NetNode[NodeId].Addr_EMPTY == NET_TRUE ){
+           sleep( NetNode[NodeId].Addr_DELAY );
+           if( cot== 0){ printf("Out-of-Time Wait 4 NetNode Get Addr Phase @ %d \n",NodeId); break; }
+           cot--;
+   }
+
+   if( cot >0 ){
+        pthread_mutex_lock(&count_mutex);
+        if (CheckAddrInfNetNode2TaskList(NodeId) == NET_OK_TASK ){
+               printf("Get NetNode 2 TaskList Ok @ %d\n",NodeId);
+               if(NET_DEBUG==0 ){ DisplayMapTable4NetNode(); }
+               if(TASK_DEBUG==0){ DisplayTaskList();         }
+        }
+        pthread_mutex_unlock(&count_mutex);
+
+  } else {
+      sleep( NetNode[NodeId].Addr_DELAY );
+  }
+
+   sleep( NetNode[NodeId].Addr_DELAY );
+ }
+
+ pthread_exit(NULL);
+}
+
