@@ -43,7 +43,7 @@ sub new {
                              ')'        => 0,       #rsr
                              ';'        => 0,       #end
                              'rev_key'  => { 
-                                             name => 'itmp_', #reverse key
+                                             name => 'itmp_', #reserve key
                                              id   =>  0, 
                                            },
                               },       
