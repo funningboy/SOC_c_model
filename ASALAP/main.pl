@@ -1,5 +1,17 @@
 
 #!/usr/bin/perl
+#======================================
+# author : sean chen
+# mail : funningboy@gmail.com
+# publish : 2010/12/03
+#
+# how to use it?
+# perl main.pl
+# dot -Tpng cc.dot > cc.png
+#
+# require : graphviz http://www.graphviz.org/
+#======================================
+
 
 use CDFG;
 use strict;
@@ -46,10 +58,26 @@ my $tt = CDFG->new();
    $tt->set_time_weighted_edge('+::1','#::1',1);
    $tt->set_time_weighted_edge('<::0','#::1',1);
 
-   $tt->run_ASAP();
-#   $tt->dump_ASAP(); 
-#   $tt->dump_graph();
-#   $tt->dump_vertex_pre_stack('c');
-#   $tt->del_time_weighted_vertex('c');
-#   print $tt->get_time_weighted_vertex('c');
+   # initial set
+   $tt->run_time_weighted_ini();
 
+   # ASAP flow
+   $tt->run_time_weighted_test();
+   $tt->run_time_weighted_ASAP();
+   $tt->rst_time_weighted_ASAP();
+   # dump or not
+   $tt->dump_ASAP_graphviz_file('ASAP.dot');
+
+   # ALAP flow
+   $tt->run_time_weighted_test();
+   $tt->run_time_weighted_max_path();
+   $tt->run_time_weighted_ALAP();
+   $tt->rst_time_weighted_ALAP();
+   # dump or not
+   $tt->dump_ALAP_grpahviz_file('ALAP.dot');
+  
+   # report
+my $rpt = $tt->run_report();
+   print Dumper($rpt);
+
+ 
