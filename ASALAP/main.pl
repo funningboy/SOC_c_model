@@ -40,7 +40,7 @@ my $tt = CDFG->new();
    $tt->set_time_weighted_edge('#::0','*::0',0);
    $tt->set_time_weighted_edge('#::0','*::1',0);
    $tt->set_time_weighted_edge('#::0','*::2',0);
-   $tt->set_time_weighted_edge('#::0','*::3',0);
+   $tt->set_time_weighted_edge('#::0','*::3',2);
    $tt->set_time_weighted_edge('#::0','+::0',0);
 
    $tt->set_time_weighted_edge('*::0','*::4',2);
