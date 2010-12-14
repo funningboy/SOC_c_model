@@ -438,6 +438,11 @@ sub run_time_weighted_ASAP {
         while( $self->is_begin_stack_empty()!=0 ){
                $src = $self->pop_begin_stack();
 
+               if($self->is_end_stack_exist($src)==0){
+                 $self->get_vertex_nxt_bakup2stack();
+                # $self->get_vertex_pre_bakup2stack();
+               }
+
             while( $self->is_vertex_nxt_stack_empty($src)!=0 ){
                    $nxt     = $self->pop_vertex_nxt_stack($src);
                    $tm_svex = $self->get_time_weighted_vertex($src);
@@ -494,6 +499,11 @@ sub run_time_weighted_ALAP {
     
         while( $self->is_end_stack_empty()!=0 ){
                $src = $self->pop_end_stack();
+
+               if($self->is_begin_stack_exist($src)==0){
+                # $self->get_vertex_nxt_bakup2stack();
+                 $self->get_vertex_pre_bakup2stack();
+               }
 
             while( $self->is_vertex_pre_stack_empty($src)!=0 ){
                    $nxt     = $self->pop_vertex_pre_stack($src);
