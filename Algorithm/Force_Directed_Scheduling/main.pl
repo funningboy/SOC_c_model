@@ -1,16 +1,5 @@
 #!/usr/bin/perl
 
-#======================================
-# author : sean chen
-# mail : funningboy@gmail.com
-# publish : 2010/12/14
-#
-# how to use it?
-# perl main.pl
-# dot -Tpng cc.dot > cc.png
-#
-# require : graphviz http://www.graphviz.org/
-#======================================
 use Data::Dumper;
 use SysPerl::syntax2DFG;
 use SysPerl::constrain2DFG;
@@ -73,9 +62,9 @@ my $DFG = $syn->get_deep_copy_DFG();
 my $constrain_time_weighted_vertices = { 
      '+'  => 1,   # add delay 1 unit s
      '-'  => 1,   # sub delay 1 unit s
-     '*'  => 5,   # mul
-     '/'  => 8,   # div
-     '%'  => 8,   # rem
+     '*'  => 2,   # mul
+     '/'  => 2,   # div
+     '%'  => 2,   # rem
      '>>' => 1,   # rsht
      '<<' => 1,   # lsht
 };
@@ -112,13 +101,10 @@ my $sch = SysPerl::schedule2DFG->new();
    $sch->run_forece_directed_scheduling();
    $sch->report();
 
-# not yet finish
 #=============================
 # explore hardware
 #=============================  
-#my $arc = SysPerl::arch2DFG->new();
-#   $arc->set_deep_sched2arch($sch);
-#   $arc->run_REG_cluster();
-#   $arc->run_ALU_cluster();
-#   $arc->run_expc();
-
+my $arc = SysPerl::arch2DFG->new();
+   $arc->set_deep_sched2arch($sch);
+   $arc->run_ALU_cluster();
+   $arc->run_explore_SystemC();
