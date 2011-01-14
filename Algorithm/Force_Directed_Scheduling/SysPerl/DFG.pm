@@ -205,6 +205,7 @@ sub del_vertex_pre_stack {
  
 }
 
+
 sub get_vertex_pre_stack {
     my ($self,$vertex) = (@_);
 return $self->{Vertex_list}->{pre}->{$vertex};
@@ -220,6 +221,15 @@ sub set_vertex_pre_stacks {
       foreach my $ky (keys %{$arr}){ 
         @{$self->{Vertex_list}->{pre}->{$ky}} = @{$arr->{$ky}};
   }
+}
+
+
+sub sort_vertex_pre_stack {
+   my ($self,$vertex) = (@_);
+   my $c;    
+   my  @arr = @{$self->{Vertex_list}->{pre}->{$vertex}};
+     @{$self->{Vertex_list}->{pre}->{$vertex}} = sort { $b->[1] cmp $a->[1] } @arr;
+
 }
 
 sub is_vertex_nxt_stack_empty {
